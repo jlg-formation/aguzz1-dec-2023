@@ -1,9 +1,9 @@
 console.log('About to start a server...');
 
-const express = require('express');
-const serveIndex = require('serve-index');
+import express from 'express';
+import serveIndex from 'serve-index';
 
-const api = require('./api');
+import api from './api';
 
 const app = express();
 const port = 3000;
