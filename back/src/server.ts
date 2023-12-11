@@ -8,10 +8,16 @@ import api from './api';
 const app = express();
 const port = 3000;
 
-app.use((req, res, next) => {
+const loggingMiddleware = (
+  req: express.Request,
+  res: express.Response,
+  next: express.NextFunction
+) => {
   console.log('req: ', req.method, req.url);
   next();
-});
+};
+
+app.use(loggingMiddleware);
 
 app.use('/api', api);
 
