@@ -22,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        @for (a of articles; track a.id) {
+        @for (a of articleService.articles; track a.id) {
         <tr>
           <td class="name">{{ a.name }}</td>
           <td class="price number">{{ a.price }} €</td>
