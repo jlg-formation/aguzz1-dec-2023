@@ -11,4 +11,14 @@ export const routes: Routes = [
     path: 'legal',
     component: LegalComponent,
   },
+  {
+    path: 'stock',
+    loadComponent: async () =>
+      (await import('./stock/routes/list/list.component')).ListComponent,
+  },
+  {
+    path: 'stock/add',
+    loadComponent: async () =>
+      (await import('./stock/routes/add/add.component')).AddComponent,
+  },
 ];
