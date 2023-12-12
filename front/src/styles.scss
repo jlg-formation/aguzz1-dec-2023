@@ -1,5 +1,7 @@
 @use "../node_modules/normalize.css/normalize.css";
 
+@use "./scss/button.scss";
+
 *,
 ::after,
 ::before {
@@ -14,6 +16,7 @@ main {
   display: flex;
   flex-flow: column;
   align-items: center;
+  gap: 0.5em;
 
   width: 100%;
   max-width: 100ch;
