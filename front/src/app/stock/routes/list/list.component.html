@@ -1,1 +1,42 @@
-<p>list works!</p>
+<main>
+  <h1>Liste des articles</h1>
+  <div class="content">
+    <nav>
+      <button>Rafraîchir</button>
+      <a routerLink="add" class="button">Ajouter</a>
+      <button>Supprimer</button>
+    </nav>
+    <div class="error"></div>
+    <table>
+      <thead>
+        <tr>
+          <th class="name">Nom</th>
+          <th class="price">Prix</th>
+          <th class="qty">Quantité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="name">Tournevis</td>
+          <td class="price number">4.50 €</td>
+          <td class="qty number">345</td>
+        </tr>
+        <tr>
+          <td class="name">Marteau</td>
+          <td class="price number">23.00 €</td>
+          <td class="qty number">4</td>
+        </tr>
+        <tr>
+          <td class="name">Pelle</td>
+          <td class="price number">12.00 €</td>
+          <td class="qty number">13</td>
+        </tr>
+        <tr>
+          <td class="name">Scie</td>
+          <td class="price number">7.99 €</td>
+          <td class="qty number">34</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
