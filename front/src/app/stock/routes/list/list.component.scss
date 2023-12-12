@@ -35,5 +35,11 @@ table {
     tr.selected {
       background: #ccc;
     }
+
+    div.empty {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }
