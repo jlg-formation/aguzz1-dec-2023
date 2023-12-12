@@ -22,5 +22,5 @@ export class ListComponent {
   faTrashCan = faTrashCan;
   faCircleNotch = faCircleNotch;
 
-  constructor(public readonly articleService: ArticleService) {}
+  constructor(protected readonly articleService: ArticleService) {}
 }
