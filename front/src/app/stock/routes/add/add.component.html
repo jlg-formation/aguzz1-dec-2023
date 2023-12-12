@@ -3,17 +3,17 @@
   <form [formGroup]="f" (ngSubmit)="submit()">
     <label>
       <span>Nom</span>
-      <input type="text" />
+      <input type="text" formControlName="name" />
       <span class="error"></span>
     </label>
     <label>
       <span>Prix</span>
-      <input type="text" />
+      <input type="number" formControlName="price" />
       <span class="error"></span>
     </label>
     <label>
       <span>Quantité</span>
-      <input type="text" />
+      <input type="number" formControlName="qty" />
       <span class="error"></span>
     </label>
     <div class="error"></div>

@@ -13,9 +13,9 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 })
 export class AddComponent {
   f = new FormGroup({
-    name: new FormControl(),
-    price: new FormControl(),
-    qty: new FormControl(),
+    name: new FormControl('Truc'),
+    price: new FormControl(0),
+    qty: new FormControl(1),
   });
   faPlus = faPlus;
 
