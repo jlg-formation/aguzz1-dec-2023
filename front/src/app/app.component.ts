@@ -6,7 +6,7 @@ import { LayoutModule } from './layout/layout.module';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, LayoutModule],
+  imports: [CommonModule, LayoutModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
