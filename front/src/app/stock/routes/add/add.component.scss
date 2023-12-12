@@ -1,0 +1,30 @@
+form {
+  display: flex;
+  flex-flow: column;
+
+  width: 100%;
+  max-width: 50ch;
+
+  label {
+    display: flex;
+    flex-flow: column;
+
+    span.error {
+      height: 1em;
+    }
+
+    input {
+      padding: 0.5em 1em;
+      border: 0.1em solid #aaa;
+      border-radius: 0.3em;
+    }
+  }
+
+  div.error {
+    height: 3em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
