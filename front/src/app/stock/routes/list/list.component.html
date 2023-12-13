@@ -31,7 +31,16 @@
         </tr>
       </thead>
       <tbody>
-        @for (a of articleService.articles; track a.id) {
+        @if (articleService.articles === undefined) {
+        <tr>
+          <td colspan="3">
+            <div class="loading">
+              <fa-icon [icon]="faCircleNotch" [spin]="true"></fa-icon>
+              <span>Chargement des articles...</span>
+            </div>
+          </td>
+        </tr>
+        } @else { @for (a of articleService.articles; track a.id) {
         <tr (click)="select(a)" [class.selected]="selectedArticles.has(a)">
           <td class="name">{{ a.name }}</td>
           <td class="price number">{{ a.price }} €</td>
@@ -43,7 +52,7 @@
             <div class="empty">Aucun articles... 😥</div>
           </td>
         </tr>
-        }
+        } }
       </tbody>
     </table>
   </div>

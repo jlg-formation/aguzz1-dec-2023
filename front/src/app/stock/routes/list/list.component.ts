@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import {
@@ -19,16 +19,24 @@ import { sleep } from '../../../misc';
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
 })
-export class ListComponent {
+export class ListComponent implements OnInit {
+  errorMsg = '';
   faCircleNotch = faCircleNotch;
   faPlus = faPlus;
   faRotateRight = faRotateRight;
   faTrashCan = faTrashCan;
   selectedArticles = new Set<Article>();
 
-  errorMsg = '';
-
   constructor(protected readonly articleService: ArticleService) {}
+
+  ngOnInit(): void {
+    if (this.articleService.articles === undefined) {
+      (async () => {
+        await sleep(2000);
+        await this.articleService.refresh();
+      })();
+    }
+  }
 
   async refresh() {
     try {

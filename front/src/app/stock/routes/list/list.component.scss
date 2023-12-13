@@ -44,5 +44,11 @@ table {
       align-items: center;
       justify-content: center;
     }
+    div.loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5em;
+    }
   }
 }
