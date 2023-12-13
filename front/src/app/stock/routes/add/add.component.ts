@@ -1,3 +1,4 @@
+import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -7,7 +8,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-add',
   standalone: true,
-  imports: [FaIconComponent, ReactiveFormsModule],
+  imports: [FaIconComponent, ReactiveFormsModule, JsonPipe],
   templateUrl: './add.component.html',
   styleUrl: './add.component.scss',
 })
