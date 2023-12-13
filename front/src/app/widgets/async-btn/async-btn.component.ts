@@ -22,7 +22,6 @@ export class AsyncBtnComponent {
 
   async doAction() {
     this.isDoing = true;
-    await sleep(300);
     await this.action();
     this.isDoing = false;
   }

@@ -26,16 +26,26 @@ export class ListComponent {
   faTrashCan = faTrashCan;
   selectedArticles = new Set<Article>();
 
+  errorMsg = '';
+
   constructor(protected readonly articleService: ArticleService) {}
 
   async refresh() {
-    console.log('refresh');
-    await this.articleService.refresh();
-    this.selectedArticles.clear();
+    try {
+      console.log('refresh');
+      this.errorMsg = '';
+      await sleep(300);
+      await this.articleService.refresh();
+      this.selectedArticles.clear();
+    } catch (err) {
+      console.log('err: ', err);
+      this.errorMsg = 'Erreur Technique...🤭';
+    }
   }
 
   async remove() {
     console.log('remove');
+    await sleep(300);
     const ids = [...this.selectedArticles].map((a) => a.id);
     await this.articleService.remove(ids);
     await this.articleService.refresh();

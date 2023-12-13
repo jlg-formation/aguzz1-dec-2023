@@ -5,6 +5,9 @@ nav {
 
 div.error {
   height: 2em;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
 }
 
 table {
