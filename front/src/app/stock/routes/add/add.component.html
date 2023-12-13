@@ -17,13 +17,11 @@
       <span class="error"></span>
     </label>
     <div class="error"></div>
-    <button class="primary" [disabled]="isAdding">
-      <fa-icon
-        [icon]="isAdding ? faCircleNotch : faPlus"
-        [spin]="isAdding"
-      ></fa-icon>
-      <span>Ajouter</span>
-    </button>
+    <app-fluid-button
+      [icon]="faPlus"
+      [isDoing]="isAdding"
+      label="Ajouter"
+    ></app-fluid-button>
   </form>
   <!-- {{ f.value | json }} -->
 </main>

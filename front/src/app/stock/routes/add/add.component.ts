@@ -6,11 +6,17 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faCircleNotch, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { ArticleService } from '../../../services/article.service';
 import { NewArticle } from '../../../interfaces/article';
+import { FluidButtonComponent } from '../../../widgets/fluid-button/fluid-button.component';
 
 @Component({
   selector: 'app-add',
   standalone: true,
-  imports: [FaIconComponent, ReactiveFormsModule, JsonPipe],
+  imports: [
+    FaIconComponent,
+    ReactiveFormsModule,
+    JsonPipe,
+    FluidButtonComponent,
+  ],
   templateUrl: './add.component.html',
   styleUrl: './add.component.scss',
 })
