@@ -9,11 +9,13 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { Article } from '../../../interfaces/article';
 import { ArticleService } from '../../../services/article.service';
+import { AsyncBtnComponent } from '../../../widgets/async-btn/async-btn.component';
+import { sleep } from '../../../misc';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [RouterLink, FaIconComponent],
+  imports: [RouterLink, FaIconComponent, AsyncBtnComponent],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
 })
@@ -29,6 +31,7 @@ export class ListComponent {
   async remove() {
     console.log('remove');
     const ids = [...this.selectedArticles].map((a) => a.id);
+    await sleep(2000);
     await this.articleService.remove(ids);
     await this.articleService.refresh();
     this.selectedArticles.clear();
