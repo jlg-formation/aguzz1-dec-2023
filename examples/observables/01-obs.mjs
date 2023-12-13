@@ -3,8 +3,17 @@ import { Observable } from "rxjs";
 const obs = new Observable((subscriber) => {
   subscriber.next(123);
   subscriber.next("toto");
-  subscriber.next(false);
-  subscriber.complete();
+  const timer = setTimeout(() => {
+    console.log("start settimeout");
+    subscriber.next(false);
+    subscriber.complete();
+  }, 2000);
+
+  return () => {
+    console.log("on fait le menage");
+    clearTimeout(timer);
+    console.log("fin du menage");
+  };
 });
 
 const observer = {
@@ -19,4 +28,9 @@ const observer = {
   },
 };
 
-obs.subscribe(observer);
+const subscription = obs.subscribe(observer);
+setTimeout(() => {
+  console.log("about to unsubscribe");
+  subscription.unsubscribe();
+  console.log("unsubscribed");
+}, 1000);
