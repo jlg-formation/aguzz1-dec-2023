@@ -12,7 +12,7 @@ export class ArticleService {
   ];
 
   async add(newArticle: NewArticle): Promise<void> {
-    await sleep(2000);
+    await sleep(300);
     const article: Article = { ...newArticle, id: window.crypto.randomUUID() };
     this.articles.push(article);
   }
