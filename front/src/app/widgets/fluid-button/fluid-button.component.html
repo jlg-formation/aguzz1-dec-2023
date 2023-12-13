@@ -1,6 +1,8 @@
 <button class="primary" [disabled]="isDoing">
-  @if (icon !== undefined) {
-  <fa-icon [icon]="isDoing ? faCircleNotch : icon" [spin]="isDoing"></fa-icon>
+  @if (icon !== undefined && !isDoing) {
+  <fa-icon [icon]="icon"></fa-icon>
+  } @if (isDoing) {
+  <fa-icon [icon]="faCircleNotch" [spin]="isDoing"></fa-icon>
   }
   <span>{{ label }}</span>
 </button>
