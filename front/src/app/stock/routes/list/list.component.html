@@ -2,9 +2,11 @@
   <h1>Liste des articles</h1>
   <div class="content">
     <nav>
-      <button title="Rafraîchir">
-        <fa-icon [icon]="faRotateRight"></fa-icon>
-      </button>
+      <app-async-btn
+        [icon]="faRotateRight"
+        label="Rafraîchir"
+        [action]="refresh.bind(this)"
+      ></app-async-btn>
       <a routerLink="add" class="button" title="Ajouter">
         <fa-icon [icon]="faPlus"></fa-icon>
       </a>

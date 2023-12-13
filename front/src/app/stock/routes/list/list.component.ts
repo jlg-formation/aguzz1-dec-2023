@@ -28,6 +28,13 @@ export class ListComponent {
 
   constructor(protected readonly articleService: ArticleService) {}
 
+  async refresh() {
+    console.log('refresh');
+    await sleep(2000);
+    await this.articleService.refresh();
+    this.selectedArticles.clear();
+  }
+
   async remove() {
     console.log('remove');
     const ids = [...this.selectedArticles].map((a) => a.id);
