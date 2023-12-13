@@ -7,6 +7,7 @@ import { faCircleNotch, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { ArticleService } from '../../../services/article.service';
 import { NewArticle } from '../../../interfaces/article';
 import { FluidButtonComponent } from '../../../widgets/fluid-button/fluid-button.component';
+import { sleep } from '../../../misc';
 
 @Component({
   selector: 'app-add',
@@ -40,6 +41,7 @@ export class AddComponent {
     console.log('submit');
     this.isAdding = true;
     // add the new article
+    await sleep(300);
     const newArticle: NewArticle = this.f.value as NewArticle;
     await this.articleService.add(newArticle);
     await this.articleService.refresh();

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+import { sleep } from '../../misc';
 
 @Component({
   selector: 'app-async-btn',
@@ -21,6 +22,7 @@ export class AsyncBtnComponent {
 
   async doAction() {
     this.isDoing = true;
+    await sleep(300);
     await this.action();
     this.isDoing = false;
   }

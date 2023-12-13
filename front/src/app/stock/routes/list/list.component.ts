@@ -30,7 +30,6 @@ export class ListComponent {
 
   async refresh() {
     console.log('refresh');
-    await sleep(300);
     await this.articleService.refresh();
     this.selectedArticles.clear();
   }
@@ -38,7 +37,6 @@ export class ListComponent {
   async remove() {
     console.log('remove');
     const ids = [...this.selectedArticles].map((a) => a.id);
-    await sleep(300);
     await this.articleService.remove(ids);
     await this.articleService.refresh();
     this.selectedArticles.clear();
