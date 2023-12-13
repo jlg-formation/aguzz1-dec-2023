@@ -4,6 +4,8 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { ArticleService } from '../../../services/article.service';
+import { NewArticle } from '../../../interfaces/article';
 
 @Component({
   selector: 'app-add',
@@ -22,11 +24,18 @@ export class AddComponent {
 
   constructor(
     private readonly router: Router,
-    private readonly route: ActivatedRoute
+    private readonly route: ActivatedRoute,
+    private readonly articleService: ArticleService
   ) {}
 
-  submit() {
+  async submit() {
     console.log('submit');
-    this.router.navigate(['..'], { relativeTo: this.route });
+    // add the new article
+    const newArticle: NewArticle = this.f.value as NewArticle;
+    await this.articleService.add(newArticle);
+    await this.articleService.refresh();
+    // navigate to /stock
+    await this.router.navigate(['..'], { relativeTo: this.route });
+    console.log('finished');
   }
 }
