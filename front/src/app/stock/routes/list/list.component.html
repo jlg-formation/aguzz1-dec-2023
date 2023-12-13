@@ -8,9 +8,11 @@
       <a routerLink="add" class="button" title="Ajouter">
         <fa-icon [icon]="faPlus"></fa-icon>
       </a>
-      <button title="Supprimer">
+      @if (selectedArticles.size > 0) {
+      <button title="Supprimer" (click)="remove()">
         <fa-icon [icon]="faTrashCan"></fa-icon>
       </button>
+      }
     </nav>
     <div class="error"></div>
     <table>
@@ -23,7 +25,7 @@
       </thead>
       <tbody>
         @for (a of articleService.articles; track a.id) {
-        <tr>
+        <tr (click)="select(a)" [class.selected]="selectedArticles.has(a)">
           <td class="name">{{ a.name }}</td>
           <td class="price number">{{ a.price }} €</td>
           <td class="qty number">{{ a.qty }}</td>

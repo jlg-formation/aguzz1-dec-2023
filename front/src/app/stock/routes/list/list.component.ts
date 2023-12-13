@@ -7,6 +7,7 @@ import {
   faRotateRight,
   faTrashCan,
 } from '@fortawesome/free-solid-svg-icons';
+import { Article } from '../../../interfaces/article';
 import { ArticleService } from '../../../services/article.service';
 
 @Component({
@@ -17,10 +18,27 @@ import { ArticleService } from '../../../services/article.service';
   styleUrl: './list.component.scss',
 })
 export class ListComponent {
+  faCircleNotch = faCircleNotch;
   faPlus = faPlus;
   faRotateRight = faRotateRight;
   faTrashCan = faTrashCan;
-  faCircleNotch = faCircleNotch;
+  selectedArticles = new Set<Article>();
 
   constructor(protected readonly articleService: ArticleService) {}
+
+  async remove() {
+    console.log('remove');
+    const ids = [...this.selectedArticles].map((a) => a.id);
+    await this.articleService.remove(ids);
+    await this.articleService.refresh();
+    this.selectedArticles.clear();
+  }
+
+  select(a: Article) {
+    if (this.selectedArticles.has(a)) {
+      this.selectedArticles.delete(a);
+      return;
+    }
+    this.selectedArticles.add(a);
+  }
 }

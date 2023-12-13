@@ -18,4 +18,8 @@ export class ArticleService {
   }
 
   async refresh(): Promise<void> {}
+
+  async remove(ids: string[]): Promise<void> {
+    this.articles = this.articles.filter((a) => !ids.includes(a.id));
+  }
 }
