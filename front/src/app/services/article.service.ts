@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Article, Articles, NewArticle } from '../interfaces/article';
+import { sleep } from '../misc';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +12,7 @@ export class ArticleService {
   ];
 
   async add(newArticle: NewArticle): Promise<void> {
+    await sleep(2000);
     const article: Article = { ...newArticle, id: window.crypto.randomUUID() };
     this.articles.push(article);
   }

@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faCircleNotch, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { ArticleService } from '../../../services/article.service';
 import { NewArticle } from '../../../interfaces/article';
 
@@ -21,6 +21,8 @@ export class AddComponent {
     qty: new FormControl(1),
   });
   faPlus = faPlus;
+  faCircleNotch = faCircleNotch;
+  isAdding = false;
 
   constructor(
     private readonly router: Router,
@@ -30,6 +32,7 @@ export class AddComponent {
 
   async submit() {
     console.log('submit');
+    this.isAdding = true;
     // add the new article
     const newArticle: NewArticle = this.f.value as NewArticle;
     await this.articleService.add(newArticle);
@@ -37,5 +40,6 @@ export class AddComponent {
     // navigate to /stock
     await this.router.navigate(['..'], { relativeTo: this.route });
     console.log('finished');
+    this.isAdding = false;
   }
 }

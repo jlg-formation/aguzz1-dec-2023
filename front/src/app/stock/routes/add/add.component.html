@@ -17,8 +17,11 @@
       <span class="error"></span>
     </label>
     <div class="error"></div>
-    <button class="primary">
-      <fa-icon [icon]="faPlus"></fa-icon>
+    <button class="primary" [disabled]="isAdding">
+      <fa-icon
+        [icon]="isAdding ? faCircleNotch : faPlus"
+        [spin]="isAdding"
+      ></fa-icon>
       <span>Ajouter</span>
     </button>
   </form>
