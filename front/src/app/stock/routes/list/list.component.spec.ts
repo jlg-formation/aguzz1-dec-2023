@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListComponent } from './list.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ListComponent', () => {
   let component: ListComponent;
@@ -8,10 +9,9 @@ describe('ListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ListComponent]
-    })
-    .compileComponents();
-    
+      imports: [ListComponent, RouterTestingModule],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(ListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
