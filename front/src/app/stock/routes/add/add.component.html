@@ -19,8 +19,13 @@
     </label>
     <label>
       <span>Prix</span>
-      <input type="number" formControlName="price" />
-      <span class="error"></span>
+      <input type="number" formControlName="price" step="0.01" />
+      <span class="error">
+        @if (f.controls.price.touched && f.controls.price.errors) { @if (
+        f.controls.price.errors['min']) {
+        <span> Prix trop bas </span>
+        } }
+      </span>
     </label>
     <label>
       <span>Quantité</span>
@@ -29,6 +34,8 @@
         @if (f.controls.qty.touched && f.controls.qty.errors) { @if (
         f.controls.qty.errors['integer']) {
         <span>{{ f.controls.qty.errors["integer"].message }} </span>
+        } @else if (f.controls.qty.errors['min']) {
+        <span> Champ trop petit </span>
         } }
       </span>
     </label>
