@@ -8,6 +8,9 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { ArticleService } from './services/article.service';
 import { HttpArticleService } from './services/http-article.service';
+import { environment } from '../environments/environment';
+
+console.log('environment: ', environment);
 
 export const appConfig: ApplicationConfig = {
   providers: [
