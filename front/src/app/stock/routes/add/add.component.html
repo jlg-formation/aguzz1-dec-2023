@@ -16,7 +16,9 @@
       <input type="number" formControlName="qty" />
       <span class="error"></span>
     </label>
-    <div class="error"></div>
+    <div class="error">
+      {{ errorMsg }}
+    </div>
     <app-fluid-button
       [icon]="faPlus"
       [isDoing]="isAdding"

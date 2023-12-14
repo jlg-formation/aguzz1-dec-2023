@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ArticleService } from './article.service';
 import { HttpClient } from '@angular/common/http';
-import { Articles } from '../interfaces/article';
+import { Articles, NewArticle } from '../interfaces/article';
 import { lastValueFrom } from 'rxjs';
 
 const url = 'http://localhost:3000/api/articles';
@@ -17,5 +17,9 @@ export class HttpArticleService extends ArticleService {
 
   override async refresh(): Promise<void> {
     this.articles = await lastValueFrom(this.http.get<Articles>(url));
+  }
+
+  override async add(newArticle: NewArticle): Promise<void> {
+    await lastValueFrom(this.http.post<void>(url, newArticle));
   }
 }

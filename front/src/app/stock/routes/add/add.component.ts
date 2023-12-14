@@ -30,6 +30,7 @@ export class AddComponent {
   faPlus = faPlus;
   faCircleNotch = faCircleNotch;
   isAdding = false;
+  errorMsg = '';
 
   constructor(
     private readonly router: Router,
@@ -38,16 +39,23 @@ export class AddComponent {
   ) {}
 
   async submit() {
-    console.log('submit');
-    this.isAdding = true;
-    // add the new article
-    await sleep(300);
-    const newArticle: NewArticle = this.f.value as NewArticle;
-    await this.articleService.add(newArticle);
-    await this.articleService.refresh();
-    // navigate to /stock
-    await this.router.navigate(['..'], { relativeTo: this.route });
-    console.log('finished');
-    this.isAdding = false;
+    try {
+      console.log('submit');
+      this.isAdding = true;
+      this.errorMsg = '';
+      // add the new article
+      await sleep(300);
+      const newArticle: NewArticle = this.f.value as NewArticle;
+      await this.articleService.add(newArticle);
+      await this.articleService.refresh();
+      // navigate to /stock
+      await this.router.navigate(['..'], { relativeTo: this.route });
+      console.log('finished');
+    } catch (err) {
+      console.log('err: ', err);
+      this.errorMsg = 'Erreur Technique...';
+    } finally {
+      this.isAdding = false;
+    }
   }
 }
