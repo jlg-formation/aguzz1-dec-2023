@@ -32,23 +32,22 @@ export class ListComponent implements OnInit {
   ngOnInit(): void {
     if (this.articleService.articles === undefined) {
       (async () => {
-        await sleep(2000);
-        await this.articleService.refresh();
+        try {
+          await sleep(2000);
+          await this.articleService.refresh();
+        } catch (err) {
+          console.log('err: ', err);
+          this.errorMsg = 'Technical Error...';
+        }
       })();
     }
   }
 
   async refresh() {
-    try {
-      console.log('refresh');
-      this.errorMsg = '';
-      await sleep(300);
-      await this.articleService.refresh();
-      this.selectedArticles.clear();
-    } catch (err) {
-      console.log('err: ', err);
-      this.errorMsg = 'Erreur Technique...🤭';
-    }
+    console.log('refresh');
+    await sleep(300);
+    await this.articleService.refresh();
+    this.selectedArticles.clear();
   }
 
   async remove() {
@@ -70,6 +69,10 @@ export class ListComponent implements OnInit {
 
   setError(error: unknown) {
     console.log('error: ', error);
-    this.errorMsg = 'Erreur Technique...';
+    this.errorMsg = 'Erreur Technique...😫';
+  }
+
+  resetError() {
+    this.errorMsg = '';
   }
 }

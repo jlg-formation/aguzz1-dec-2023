@@ -12,9 +12,9 @@ const app = express.Router();
 export default app;
 
 app.use((req, res, next) => {
-  res.set('Access-Control-Allow-Origin', '*');
-  res.set('Access-Control-Allow-Headers', '*');
-  res.set('Access-Control-Allow-Methods', '*');
+  // res.set('Access-Control-Allow-Origin', '*');
+  // res.set('Access-Control-Allow-Headers', '*');
+  // res.set('Access-Control-Allow-Methods', '*');
   next();
 });
 

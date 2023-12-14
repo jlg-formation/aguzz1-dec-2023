@@ -21,10 +21,13 @@ export class AsyncBtnComponent {
 
   @Output()
   throwError = new EventEmitter<unknown>();
+  @Output()
+  startAction = new EventEmitter<void>();
 
   async doAction() {
     try {
       this.isDoing = true;
+      this.startAction.emit();
       await this.action();
     } catch (err) {
       console.log('err: ', err);
