@@ -8,6 +8,7 @@ import { ArticleService } from '../../../services/article.service';
 import { NewArticle } from '../../../interfaces/article';
 import { FluidButtonComponent } from '../../../widgets/fluid-button/fluid-button.component';
 import { sleep } from '../../../misc';
+import { AutofocusDirective } from '../../../widgets/autofocus.directive';
 
 @Component({
   selector: 'app-add',
@@ -17,6 +18,7 @@ import { sleep } from '../../../misc';
     ReactiveFormsModule,
     JsonPipe,
     FluidButtonComponent,
+    AutofocusDirective,
   ],
   templateUrl: './add.component.html',
   styleUrl: './add.component.scss',
