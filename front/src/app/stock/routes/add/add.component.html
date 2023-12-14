@@ -14,7 +14,9 @@
             f.controls.name.errors["maxlength"].requiredLength
           }})
         </span>
-        } }
+        } @else if ( f.controls.name.errors['blacklist']) {
+        <span> {{ f.controls.name.errors["blacklist"].message }} </span>
+        }}
       </span>
     </label>
     <label>
@@ -50,5 +52,5 @@
     ></app-fluid-button>
   </form>
   <!-- {{ f.value | json }} -->
-  <!-- {{ f.controls.qty.errors | json }} -->
+  <!-- {{ f.controls.name.errors | json }} -->
 </main>
