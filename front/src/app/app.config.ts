@@ -1,4 +1,9 @@
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import {
+  ApplicationConfig,
+  DEFAULT_CURRENCY_CODE,
+  LOCALE_ID,
+  importProvidersFrom,
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -11,5 +16,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     importProvidersFrom(HttpClientModule),
     { provide: ArticleService, useClass: HttpArticleService },
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' },
   ],
 };

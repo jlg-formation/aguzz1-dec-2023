@@ -48,7 +48,7 @@
         <tr (click)="select(a)" [class.selected]="selectedArticles.has(a)">
           <td class="name">{{ a.name }}</td>
           <td class="price number">
-            {{ a.price | currency : "EUR" : "symbol" : undefined : "fr-BE" }}
+            {{ a.price | currency }}
           </td>
           <td class="qty number">{{ a.qty }}</td>
         </tr>
