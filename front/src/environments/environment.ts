@@ -1,3 +1,5 @@
-export const environment = {};
+export const environment = {
+  origin: '',
+};
 
 window.console.log = () => {};

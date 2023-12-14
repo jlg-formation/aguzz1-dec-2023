@@ -3,8 +3,9 @@ import { ArticleService } from './article.service';
 import { HttpClient } from '@angular/common/http';
 import { Articles, NewArticle } from '../interfaces/article';
 import { lastValueFrom } from 'rxjs';
+import { environment } from '../../environments/environment';
 
-const url = 'http://localhost:3000/api/articles';
+const url = environment.origin + '/api/articles';
 
 @Injectable({
   providedIn: 'root',
