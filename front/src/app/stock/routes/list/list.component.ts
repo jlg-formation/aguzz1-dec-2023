@@ -12,11 +12,18 @@ import { ArticleService } from '../../../services/article.service';
 import { AsyncBtnComponent } from '../../../widgets/async-btn/async-btn.component';
 import { sleep } from '../../../misc';
 import { CurrencyPipe } from '@angular/common';
+import { EllipsisPipe } from '../../../widgets/ellipsis.pipe';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [RouterLink, FaIconComponent, AsyncBtnComponent, CurrencyPipe],
+  imports: [
+    RouterLink,
+    FaIconComponent,
+    AsyncBtnComponent,
+    CurrencyPipe,
+    EllipsisPipe,
+  ],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
 })
