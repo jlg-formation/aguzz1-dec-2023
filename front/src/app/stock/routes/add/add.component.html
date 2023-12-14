@@ -9,8 +9,8 @@
         f.controls.name.errors['required']) {
         <span>Champs requis</span>
         } @else if ( f.controls.name.errors['maxlength']) {
-        <span
-          >Trop grand ({{ f.controls.name.errors["maxlength"].actualLength }}>{{
+        <span>
+          Trop grand ({{ f.controls.name.errors["maxlength"].actualLength }}>{{
             f.controls.name.errors["maxlength"].requiredLength
           }})
         </span>
