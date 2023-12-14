@@ -1,4 +1,6 @@
-import express from 'express';
+import express, { json } from 'express';
+import { Article, NewArticle } from './interfaces/article';
+import { randomUUID } from 'node:crypto';
 
 const articles = [
   { id: 'a1', name: 'Tournevis', price: 2.99, qty: 123 },
@@ -16,6 +18,18 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(json());
+
 app.get('/articles', (req, res) => {
   res.json(articles);
+});
+
+app.post('/articles', (req, res) => {
+  // recuperer le nouvel article body
+  // generer un id pour l'article
+  // ajouter l'article au tableau
+  const newArticle: NewArticle = req.body;
+  const article: Article = { ...newArticle, id: randomUUID() };
+  articles.push(article);
+  res.status(201).end();
 });
