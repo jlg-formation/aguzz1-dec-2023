@@ -22,4 +22,8 @@ export class HttpArticleService extends ArticleService {
   override async add(newArticle: NewArticle): Promise<void> {
     await lastValueFrom(this.http.post<void>(url, newArticle));
   }
+
+  override async remove(ids: string[]): Promise<void> {
+    await lastValueFrom(this.http.delete<void>(url, { body: ids }));
+  }
 }

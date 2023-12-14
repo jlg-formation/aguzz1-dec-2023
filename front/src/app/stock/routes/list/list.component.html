@@ -6,6 +6,7 @@
         [icon]="faRotateRight"
         label="Rafraîchir"
         [action]="refresh.bind(this)"
+        (throwError)="setError($event)"
       ></app-async-btn>
       <a routerLink="add" class="button" title="Ajouter">
         <fa-icon [icon]="faPlus"></fa-icon>
@@ -16,6 +17,7 @@
         [icon]="faTrashCan"
         label="Supprimer"
         [action]="remove.bind(this)"
+        (throwError)="setError($event)"
       ></app-async-btn>
       }
     </nav>

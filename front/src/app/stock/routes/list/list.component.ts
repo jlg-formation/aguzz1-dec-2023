@@ -67,4 +67,9 @@ export class ListComponent implements OnInit {
     }
     this.selectedArticles.add(a);
   }
+
+  setError(error: unknown) {
+    console.log('error: ', error);
+    this.errorMsg = 'Erreur Technique...';
+  }
 }

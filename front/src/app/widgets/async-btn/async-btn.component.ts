@@ -1,7 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
-import { sleep } from '../../misc';
 
 @Component({
   selector: 'app-async-btn',
@@ -20,9 +19,18 @@ export class AsyncBtnComponent {
   @Input({ required: true })
   label = 'to be replaced';
 
+  @Output()
+  throwError = new EventEmitter<unknown>();
+
   async doAction() {
-    this.isDoing = true;
-    await this.action();
-    this.isDoing = false;
+    try {
+      this.isDoing = true;
+      await this.action();
+    } catch (err) {
+      console.log('err: ', err);
+      this.throwError.emit(err);
+    } finally {
+      this.isDoing = false;
+    }
   }
 }
