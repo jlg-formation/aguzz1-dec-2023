@@ -31,14 +31,11 @@ import { CustomValidators } from '../../../validators/custom.validator';
 })
 export class AddComponent {
   f = new FormGroup({
-    name: new FormControl('Truc', [
+    name: new FormControl('', [Validators.required, Validators.maxLength(15)]),
+    price: new FormControl(0, [Validators.required, Validators.min(0.01)]),
+    qty: new FormControl(0, [
       Validators.required,
-      Validators.maxLength(15),
-    ]),
-    price: new FormControl(0, [Validators.required, Validators.min(0)]),
-    qty: new FormControl(1, [
-      Validators.required,
-      Validators.min(0),
+      Validators.min(1),
       CustomValidators.integer,
     ]),
   });

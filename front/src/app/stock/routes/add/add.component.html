@@ -5,8 +5,8 @@
       <span>Nom</span>
       <input type="text" formControlName="name" appAutofocus />
       <span class="error">
-        @if (f.controls.name.errors) { @if ( f.controls.name.errors['required'])
-        {
+        @if (f.controls.name.touched && f.controls.name.errors) { @if (
+        f.controls.name.errors['required']) {
         <span>Champs requis</span>
         } @else if ( f.controls.name.errors['maxlength']) {
         <span
@@ -26,7 +26,8 @@
       <span>Quantité</span>
       <input type="number" formControlName="qty" min="0" step="1" />
       <span class="error">
-        @if (f.controls.qty.errors) { @if ( f.controls.qty.errors['integer']) {
+        @if (f.controls.qty.touched && f.controls.qty.errors) { @if (
+        f.controls.qty.errors['integer']) {
         <span>{{ f.controls.qty.errors["integer"].message }} </span>
         } }
       </span>
@@ -42,5 +43,5 @@
     ></app-fluid-button>
   </form>
   <!-- {{ f.value | json }} -->
-  {{ f.controls.qty.errors | json }}
+  <!-- {{ f.controls.qty.errors | json }} -->
 </main>

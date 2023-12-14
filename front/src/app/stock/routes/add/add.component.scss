@@ -18,6 +18,11 @@ form {
       padding: 0.5em 1em;
       border: 0.1em solid #aaa;
       border-radius: 0.3em;
+
+      &.ng-invalid.ng-touched {
+        border-color: red;
+        outline-color: red;
+      }
     }
   }
 
