@@ -1,11 +1,17 @@
-import { Directive } from '@angular/core';
+import { Directive, ElementRef, afterNextRender } from '@angular/core';
 
 @Directive({
-  selector: '[appAutofocus]',
-  standalone: true
+  selector: 'input[appAutofocus],textarea[appAutofocus]',
+  standalone: true,
 })
 export class AutofocusDirective {
-
-  constructor() { }
-
+  constructor(
+    private readonly elt: ElementRef<HTMLInputElement | HTMLTextAreaElement>
+  ) {
+    console.log('elt: ', elt.nativeElement);
+    console.log('instantiate directive autofocus');
+    afterNextRender(() => {
+      this.elt.nativeElement.select();
+    });
+  }
 }
