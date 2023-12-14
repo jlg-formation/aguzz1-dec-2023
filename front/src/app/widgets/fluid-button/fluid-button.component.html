@@ -1,4 +1,4 @@
-<button class="primary" [disabled]="isDoing">
+<button class="primary" [disabled]="disabled || isDoing">
   @if (icon !== undefined && !isDoing) {
   <fa-icon [icon]="icon"></fa-icon>
   } @if (isDoing) {

@@ -20,4 +20,7 @@ export class FluidButtonComponent {
   isDoing = false;
   @Input({ required: true })
   label = 'To be replaced';
+
+  @Input()
+  disabled = false;
 }

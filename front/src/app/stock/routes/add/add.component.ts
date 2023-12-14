@@ -1,6 +1,11 @@
 import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faCircleNotch, faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -9,6 +14,7 @@ import { NewArticle } from '../../../interfaces/article';
 import { FluidButtonComponent } from '../../../widgets/fluid-button/fluid-button.component';
 import { sleep } from '../../../misc';
 import { AutofocusDirective } from '../../../widgets/autofocus.directive';
+import { CustomValidators } from '../../../validators/custom.validator';
 
 @Component({
   selector: 'app-add',
@@ -25,9 +31,16 @@ import { AutofocusDirective } from '../../../widgets/autofocus.directive';
 })
 export class AddComponent {
   f = new FormGroup({
-    name: new FormControl('Truc'),
-    price: new FormControl(0),
-    qty: new FormControl(1),
+    name: new FormControl('Truc', [
+      Validators.required,
+      Validators.maxLength(15),
+    ]),
+    price: new FormControl(0, [Validators.required, Validators.min(0)]),
+    qty: new FormControl(1, [
+      Validators.required,
+      Validators.min(0),
+      CustomValidators.integer,
+    ]),
   });
   faPlus = faPlus;
   faCircleNotch = faCircleNotch;

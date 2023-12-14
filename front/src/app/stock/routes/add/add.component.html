@@ -4,7 +4,18 @@
     <label>
       <span>Nom</span>
       <input type="text" formControlName="name" appAutofocus />
-      <span class="error"></span>
+      <span class="error">
+        @if (f.controls.name.errors) { @if ( f.controls.name.errors['required'])
+        {
+        <span>Champs requis</span>
+        } @else if ( f.controls.name.errors['maxlength']) {
+        <span
+          >Trop grand ({{ f.controls.name.errors["maxlength"].actualLength }}>{{
+            f.controls.name.errors["maxlength"].requiredLength
+          }})
+        </span>
+        } }
+      </span>
     </label>
     <label>
       <span>Prix</span>
@@ -13,8 +24,12 @@
     </label>
     <label>
       <span>Quantité</span>
-      <input type="number" formControlName="qty" />
-      <span class="error"></span>
+      <input type="number" formControlName="qty" min="0" step="1" />
+      <span class="error">
+        @if (f.controls.qty.errors) { @if ( f.controls.qty.errors['integer']) {
+        <span>{{ f.controls.qty.errors["integer"].message }} </span>
+        } }
+      </span>
     </label>
     <div class="error">
       {{ errorMsg }}
@@ -23,7 +38,9 @@
       [icon]="faPlus"
       [isDoing]="isAdding"
       label="Ajouter"
+      [disabled]="f.invalid"
     ></app-fluid-button>
   </form>
   <!-- {{ f.value | json }} -->
+  {{ f.controls.qty.errors | json }}
 </main>
