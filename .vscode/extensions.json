@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    "angular.ng-template",
+    "dbaeumer.vscode-eslint",
+    "usernamehw.errorlens",
+    "mhutchie.git-graph",
+    "visualstudioexptteam.vscodeintellicode",
+    "visualstudioexptteam.vscodeintellicode-completions",
+    "xabikos.javascriptsnippets",
+    "whtouche.vscode-js-console-utils",
+    "pkief.material-icon-theme",
+    "esbenp.prettier-vscode",
+    "yatki.vscode-surround",
+    "meganrogge.template-string-converter",
+    "rangav.vscode-thunder-client",
+    "aljazsim.tsco"
+  ]
+}
