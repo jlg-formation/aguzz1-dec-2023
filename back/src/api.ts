@@ -2,7 +2,7 @@ import express, { json } from 'express';
 import { Article, NewArticle } from './interfaces/article';
 import { randomUUID } from 'node:crypto';
 
-const articles = [
+let articles = [
   { id: 'a1', name: 'Tournevis', price: 2.99, qty: 123 },
   { id: 'a2', name: 'Scie', price: 5.5, qty: 7 },
 ];
@@ -32,4 +32,12 @@ app.post('/articles', (req, res) => {
   const article: Article = { ...newArticle, id: randomUUID() };
   articles.push(article);
   res.status(201).end();
+});
+
+app.delete('/articles', (req, res) => {
+  // recuperer les ids du body
+  // filtre les articles
+  const ids: string[] = req.body;
+  articles = articles.filter((a) => !ids.includes(a.id));
+  res.status(204).end();
 });
