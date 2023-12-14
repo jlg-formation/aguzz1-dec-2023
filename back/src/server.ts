@@ -7,6 +7,7 @@ import api from './api';
 
 const app = express();
 const port = 3000;
+const publicDir = '../front/dist/front/browser';
 
 const loggingMiddleware = (req: Request, res: Response, next: NextFunction) => {
   console.log('req: ', req.method, req.url);
@@ -17,8 +18,8 @@ app.use(loggingMiddleware);
 
 app.use('/api', api);
 
-app.use(express.static('.'));
-app.use(serveIndex('.', { icons: true }));
+app.use(express.static(publicDir));
+app.use(serveIndex(publicDir, { icons: true }));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
