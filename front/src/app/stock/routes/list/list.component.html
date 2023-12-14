@@ -46,7 +46,7 @@
         </tr>
         } @else { @for (a of articleService.articles; track a.id) {
         <tr (click)="select(a)" [class.selected]="selectedArticles.has(a)">
-          <td class="name">{{ a.name | ellipsis : 6 }}</td>
+          <td class="name">{{ a.name | ellipsis : 12 }}</td>
           <td class="price number">
             {{ a.price | currency }}
           </td>
