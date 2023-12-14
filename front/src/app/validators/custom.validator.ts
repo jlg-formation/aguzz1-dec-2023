@@ -4,7 +4,7 @@ import {
   ValidationErrors,
   ValidatorFn,
 } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, delay, map, of, tap } from 'rxjs';
 import { sleep } from '../misc';
 
 export class CustomValidators {
@@ -22,15 +22,24 @@ export class CustomValidators {
     return null;
   };
 
-  static blackList: AsyncValidatorFn = async (
+  static blackList: AsyncValidatorFn = (
     control: AbstractControl
-  ): Promise<ValidationErrors | null> => {
-    console.log('check blacklist on ', control.value);
-    await sleep(2000);
-    const blackList = ['aaa', 'bbb'];
-    if (blackList.includes(control.value)) {
-      return { blacklist: { message: `le mot ${control.value} est interdit` } };
-    }
-    return null;
+  ): Observable<ValidationErrors | null> => {
+    return of(undefined).pipe(
+      delay(1000), // debounce of 1s
+      tap(() => {
+        console.log('check blacklist on ', control.value);
+      }),
+      delay(2000), // operation lourde fictive
+      map(() => {
+        const blackList = ['aaa', 'bbb'];
+        if (blackList.includes(control.value)) {
+          return {
+            blacklist: { message: `le mot ${control.value} est interdit` },
+          };
+        }
+        return null;
+      })
+    );
   };
 }
