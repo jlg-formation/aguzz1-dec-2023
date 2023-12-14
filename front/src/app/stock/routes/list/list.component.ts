@@ -11,11 +11,12 @@ import { Article } from '../../../interfaces/article';
 import { ArticleService } from '../../../services/article.service';
 import { AsyncBtnComponent } from '../../../widgets/async-btn/async-btn.component';
 import { sleep } from '../../../misc';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [RouterLink, FaIconComponent, AsyncBtnComponent],
+  imports: [RouterLink, FaIconComponent, AsyncBtnComponent, CurrencyPipe],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
 })
@@ -33,7 +34,7 @@ export class ListComponent implements OnInit {
     if (this.articleService.articles === undefined) {
       (async () => {
         try {
-          await sleep(2000);
+          await sleep(300);
           await this.articleService.refresh();
         } catch (err) {
           console.log('err: ', err);
