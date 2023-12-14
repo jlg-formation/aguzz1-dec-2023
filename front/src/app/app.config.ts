@@ -1,12 +1,10 @@
+import { HttpClientModule } from '@angular/common/http';
 import {
   ApplicationConfig,
   DEFAULT_CURRENCY_CODE,
-  LOCALE_ID,
   importProvidersFrom,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
-import { HttpClientModule } from '@angular/common/http';
 import { routes } from './app.routes';
 import { ArticleService } from './services/article.service';
 import { HttpArticleService } from './services/http-article.service';

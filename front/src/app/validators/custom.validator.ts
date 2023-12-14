@@ -5,7 +5,6 @@ import {
   ValidatorFn,
 } from '@angular/forms';
 import { Observable, delay, map, of, tap } from 'rxjs';
-import { sleep } from '../misc';
 
 export class CustomValidators {
   static integer: ValidatorFn = (
